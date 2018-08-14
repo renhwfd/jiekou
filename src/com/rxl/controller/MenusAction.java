@@ -1,15 +1,11 @@
 package com.rxl.controller;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.alibaba.fastjson.JSON;
 import com.rxl.bean.Menus;
 import com.rxl.bean.Result;
 import com.rxl.service.IMenusService;
@@ -49,6 +45,7 @@ public class MenusAction {
 		return mv;
 	}
 	@RequestMapping("/update")
+	@ResponseBody
 	public Result update(Menus menus){
 		Result rs = Result.getSuccessResult();
 		Integer num = menusService.update(menus);

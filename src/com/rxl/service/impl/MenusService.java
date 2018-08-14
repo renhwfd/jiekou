@@ -30,6 +30,7 @@ public class MenusService implements IMenusService {
 				map.put("open", "false");
 				map.put("url", "right?id="+menus.getId());
 				map.put("target", "right");
+				map.put("local", menus.getLocal());
 				list.add(map);
 			}
 		}
@@ -49,6 +50,7 @@ public class MenusService implements IMenusService {
 				}
 					map.put("url", "right?id="+menus.getId());
 					map.put("target", "right");
+					map.put("local", menus.getLocal());
 				map.put("name", menus.getName());
 				resp.add(map);
 			}
