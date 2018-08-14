@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rxl.dao.MenusDao" >
+  <resultMap id="BaseResultMap" type="com.rxl.bean.Menus" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="id" property="name" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="parentid" property="parentid" jdbcType="INTEGER" />
+    <result column="local" property="local" jdbcType="INTEGER" />
+    <result column="params" property="params" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, url, parentid, local, params
+  </sql>
+  <select id="queryAll" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from menus
+  </select>
+  <select id="queryOne" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from menus
+    where id=#{id}
+  </select>
+  <update id="update" parameterType="com.rxl.bean.Menus" >
+  	update menus set 
+  	<if test="name!=null and name!=''">
+	  	name = #{name},
+  	</if>
+  	<if test="url != null and url != ''">
+	  	url = #{url},
+  	</if>
+  	<if test="parentid != null and parentid != ''">
+	  	parentid = #{parentid},
+  	</if>
+  	<if test="params != null and params != ''">
+	  	params = #{params},
+  	</if>
+  	<if test="local != null and local != ''">
+	  	local = #{local},
+  	</if>
+  	where id = #{id}
+  </update>
+</mapper>
